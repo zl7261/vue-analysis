@@ -18,6 +18,9 @@ export default {
     },
     render(createElement) {
         return createElement('div', {
+            attrs:{
+                id:'app'
+            }
         }, [this.message])
     }
 }
