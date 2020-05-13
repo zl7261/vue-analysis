@@ -1,17 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="replace-index-id"></div>
-    <!-- built files will be auto injected -->
-  </body>
+</head>
+<body>
+<noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong>
+</noscript>
+<script>
+
+</script>
+<div keep>
+    <div replace>
+        original test
+    </div>
+</div>
+<!-- built files will be auto injected -->
+<script>
+let divElement = document.querySelector("keep")
+divElement.addEventListener('DOMNodeInserted', function (e) {
+    console.log(e.target, ' replace was inserted');
+})
+
+let templateEl = document.querySelector("[replace]")
+templateEl.addEventListener('DOMNodeRemoved', function (e) {
+    console.log('replace was removed');
+});
+</script>
+</body>
 </html>

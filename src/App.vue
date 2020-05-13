@@ -9,7 +9,7 @@
 export default {
     name: 'App',
     created() {
-        console.log(this._data.message)
+        // console.log(this._data.message)
     },
     data() {
         return {
