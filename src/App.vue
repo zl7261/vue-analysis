@@ -3,21 +3,25 @@
         <strong>{{message}}</strong>
         <HelloWorld/>
         <img src="./assets/logo.png" width="200" height="200" alt="logo">
-        <B/>
-        <hr>
-        <A/>
+        <!--        <A/>-->
+        <!--        <hr>-->
+        <!--        <B/>-->
     </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld'
 // 组件实际加载依赖 跟import的顺序有关系
-import A from './components/A'
-import B from './components/B'
+import B from '@/components/B'
+import A from '@/components/A'
 
 export default {
     name: 'App',
-    components: {HelloWorld, A, B},
+    components: {
+        HelloWorld,
+        // A,
+        // B
+    },
     created() {
         // console.log(this._data.message)
     },

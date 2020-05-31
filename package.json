@@ -6,6 +6,7 @@
   "author": {
     "name": "ustbuhuangyi"
   },
+  "type": "commonjs",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -25,18 +26,8 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "vue-template-compiler": "^2.6.11",
-    "vuepress": "^1.2.0"
-  },
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
+    "vuepress": "^1.2.0",
+    "moment": "^2.26.0"
   },
   "browserslist": [
     "> 1%",

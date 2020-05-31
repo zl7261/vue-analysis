@@ -1,7 +1,9 @@
 <template>
     <div>
         {{ text }}
-        <B/>
+        <div style="border: red solid 1px">
+            <B/>
+        </div>
     </div>
 </template>
 
@@ -19,6 +21,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>
