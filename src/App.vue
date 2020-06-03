@@ -28,6 +28,12 @@ export default {
     created(){
         console.log('App created')
     },
+    beforeMount(){
+        console.log('App beforeMount')
+    },
+    mounted(){
+        console.log('App mounted')
+    },
     data() {
         return {
             message: 'Hello World!'

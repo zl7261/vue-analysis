@@ -38,12 +38,18 @@ import TestMix from './TestMix.vue'
 
 export default {
     name: 'HelloWorld',
-    mixins: [TestMix],
+    // mixins: [TestMix],
     beforeCreate(){
         console.log('HelloWorld beforeCreate')
     },
     created(){
         console.log('HelloWorld created')
+    },
+    beforeMount(){
+        console.log('HelloWorld beforeMount')
+    },
+    mounted(){
+        console.log('HelloWorld mounted')
     },
     props: {
         msg: String
