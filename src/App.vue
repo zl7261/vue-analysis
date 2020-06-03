@@ -22,8 +22,11 @@ export default {
         // A,
         // B
     },
-    created() {
-        // console.log(this._data.message)
+    beforeCreate(){
+        console.log('App beforeCreate')
+    },
+    created(){
+        console.log('App created')
     },
     data() {
         return {
