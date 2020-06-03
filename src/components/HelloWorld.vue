@@ -44,12 +44,22 @@ export default {
     },
     created(){
         console.log('HelloWorld created')
+        console.log(this._isMounted)
+        console.log(this._isDestroyed)
     },
     beforeMount(){
+
         console.log('HelloWorld beforeMount')
+        console.log(this._isMounted)
+        console.log(this._isDestroyed)
     },
     mounted(){
         console.log('HelloWorld mounted')
+        console.log(this._isMounted)
+        console.log(this._isDestroyed)
+    },
+    update(){
+        console.log('update')
     },
     props: {
         msg: String

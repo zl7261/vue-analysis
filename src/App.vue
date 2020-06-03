@@ -1,7 +1,10 @@
 <template>
     <div id="app">
         <strong>{{message}}</strong>
-        <HelloWorld/>
+        <button @click="count++" id="count">
+            click {{ count }} times
+        </button>
+        <HelloWorld :msg="message"/>
         <img src="./assets/logo.png" width="200" height="200" alt="logo">
         <!--        <A/>-->
         <!--        <hr>-->
@@ -22,37 +25,33 @@ export default {
         // A,
         // B
     },
-    beforeCreate(){
+    beforeCreate() {
         console.log('App beforeCreate')
     },
-    created(){
+    created() {
         console.log('App created')
     },
-    beforeMount(){
+    beforeMount() {
         console.log('App beforeMount')
     },
-    mounted(){
+    mounted() {
         console.log('App mounted')
+    },
+    // vnode数据已更新，尚未渲染到DOM
+    beforeUpdate() {
+        console.log(document.querySelector('#count').innerHTML)
+        console.log('App beforeUpdate, count:', this.count)
+    },
+    // vnode数据已更新，已渲染到DOM
+    updated() {
+        console.log(document.querySelector('#count').innerHTML)
+        console.log('App update, count:', this.count)
     },
     data() {
         return {
-            message: 'Hello World!'
+            message: 'Hello World!',
+            count: 0
         }
-    },
-    render(createElement) {
-        return createElement('div', {
-            attrs: {
-                id: 'app',
-                haha: ''
-            },
-            class: [
-                {'cls1': true},
-                {'cls2': false}
-            ],
-            style: {
-                color: 'red'
-            }
-        }, [this.message])
     }
 }
 </script>
