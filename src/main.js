@@ -1,5 +1,4 @@
-import Vue from 'vue/dist/vue.js';
-
+import Vue from 'vue'
 import App from './App.vue'
 
 Vue.config.productionTip = false
@@ -22,10 +21,20 @@ Vue.config.productionTip = false
 // 2. webpack import:Promise
 // Vue.component('HelloWorld', () => import('./components/HelloWorld.vue'))
 const LoadingComp = {
-    template: '<div>loading</div>'
+    render(){
+        let _vm = this
+        let _h = _vm.$createElement
+        let _c = _vm._self._c || _h
+        return _c("div", [_vm._v("Loading")])
+    }
 }
 const ErrorComp = {
-    template: '<div>error</div>'
+    render(){
+        let _vm = this
+        let _h = _vm.$createElement
+        let _c = _vm._self._c || _h
+        return _c("div", [_vm._v("Error")])
+    }
 }
 
 const AsyncHello = () => ({
@@ -33,7 +42,7 @@ const AsyncHello = () => ({
     loading: LoadingComp,
     error: ErrorComp,
     delay: 200,
-    timeout: 1000
+    timeout: 100
 })
 
 Vue.component('HelloWorld', AsyncHello)

@@ -20,7 +20,7 @@
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld'
+// import HelloWorld from '@/components/HelloWorld'
 // 组件实际加载依赖 跟import的顺序有关系
 // import B from '@/components/B'
 // import A from '@/components/A'
