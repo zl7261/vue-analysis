@@ -1,6 +1,13 @@
 <template>
     <div id="app">
-        <strong>{{message}}</strong>
+        <strong :style="{'color':'red'}">
+            <strong :style="{'color':'green'}">
+            {{message}}
+            </strong>
+        </strong>
+        <strong :style="{'color':'yellow'}">
+                {{message}}
+        </strong>
         <button @click="count++" id="count">
             click {{ count }} times
         </button>
@@ -13,18 +20,18 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+// import HelloWorld from './components/HelloWorld'
 // 组件实际加载依赖 跟import的顺序有关系
-import B from '@/components/B'
-import A from '@/components/A'
+// import B from '@/components/B'
+// import A from '@/components/A'
 
 export default {
     name: 'App',
-    components: {
-        HelloWorld,
-        // A,
-        // B
-    },
+    // components: {
+    //     HelloWorld,
+    //     // A,
+    //     // B
+    // },
     beforeCreate() {
         console.log('App beforeCreate')
     },
