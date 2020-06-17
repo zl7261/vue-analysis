@@ -1,6 +1,6 @@
 const hash = require('hash-sum')
 const uniq = require('lodash.uniq')
-import { isJS } from './util'
+import { isJS, isCSS, onEmit } from './util'
 
 export default class VueSSRClientPlugin {
   constructor (options = {}) {
@@ -10,7 +10,7 @@ export default class VueSSRClientPlugin {
   }
 
   apply (compiler) {
-    compiler.plugin('emit', (compilation, cb) => {
+    onEmit(compiler, 'vue-client-plugin', (compilation, cb) => {
       const stats = compilation.getStats().toJson()
 
       const allFiles = uniq(stats.assets
@@ -19,10 +19,10 @@ export default class VueSSRClientPlugin {
       const initialFiles = uniq(Object.keys(stats.entrypoints)
         .map(name => stats.entrypoints[name].assets)
         .reduce((assets, all) => all.concat(assets), [])
-        .filter(isJS))
+        .filter((file) => isJS(file) || isCSS(file)))
 
       const asyncFiles = allFiles
-        .filter(isJS)
+        .filter((file) => isJS(file) || isCSS(file))
         .filter(file => initialFiles.indexOf(file) < 0)
 
       const manifest = {
@@ -53,12 +53,6 @@ export default class VueSSRClientPlugin {
           })
         }
       })
-
-      // const debug = (file, obj) => {
-      //   require('fs').writeFileSync(__dirname + '/' + file, JSON.stringify(obj, null, 2))
-      // }
-      // debug('stats.json', stats)
-      // debug('client-manifest.json', manifest)
 
       const json = JSON.stringify(manifest, null, 2)
       compilation.assets[this.options.filename] = {
