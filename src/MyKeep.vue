@@ -2,40 +2,51 @@
   <div>
 
     <keep-alive>
-      <component :is="cacheComponent[cacheKey]"
+      <component :is="currentComp"
       />
-
     </keep-alive>
     <button @click="changeCache">change cache</button>
   </div>
 </template>
 
 <script>
-import A1 from '../src/components/keepalive/A1'
-import B2 from '../src/components/keepalive/B2'
+const A = {
+  name: 'A',
+  render() {
+    return (
+        <div class="a">
+          <p>A Comp</p>
+        </div>
+    )
+  }
+}
+
+const B = {
+  name: 'B',
+  render() {
+    return (
+        <div class="b">
+          <p>B Comp</p>
+        </div>
+    )
+  }
+
+}
 
 export default {
   name: "MyKeep",
+  components: {
+    A,
+    B
+  },
   data() {
     return {
-      cacheKey: 'A',
-      cacheComponent: {
-        A: A1,
-        B: B2
-      }
+      currentComp: 'A'
     }
   },
   methods: {
     changeCache() {
-      if (this.cacheKey === 'A') {
-        this.cacheKey = 'B'
-        return
-      }
-
-      if (this.cacheKey === 'B') {
-        this.cacheKey = 'A'
-        return
-      }
+      this.currentComp = this.currentComp === 'A' ? 'B' : 'A'
     }
   }
 }
